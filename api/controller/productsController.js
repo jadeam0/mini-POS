@@ -1,27 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const route = express.Router();
+const routes = express.Router();
 const db = require('../config/index');
+const { routes } = require('./userController');
+const Products = require('../model/products');
 
 
-route.get('/products', (req, res) => {
-    product.fetchproducts(req, res);
+routes.get('/products', (req, res) => {
+    Products.fetchproducts(req, res);
 });
 
-route.get('/product/:id', (req,res) => {
-    product.fetchproduct(req, res);
+routes.get('/product/:id', (req,res) => {
+    Products.fetchproduct(req, res);
 });
 
-route.post('/product', bodyParser.json(), (req, res) => {
-    product.addProduct(req, res);
+routes.post('/product', bodyParser.json(), (req, res) => {
+    Products.addProduct(req, res);
 });
 
-route.put('/product/:id', bodyParser.json(), (req, res) => {
-    product.updateProduct(req, res);
+routes.put('/product/:id', bodyParser.json(), (req, res) => {
+    Products.updateProduct(req, res);
 });
 
-route.delete('/product/:id', (req, res) => {
-    product.deleteProduct(req, res);
+routes.delete('/product/:id', (req, res) => {
+    Products.deleteProduct(req, res);
 });
 
 module.exports = route;
