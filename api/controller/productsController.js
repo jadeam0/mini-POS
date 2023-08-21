@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = express.Router();
-const db = require('../config/index');
-const { routes } = require('./userController');
-const Products = require('../model/products');
+// const db = require('../config/index');
+// const { routes } = require('./userController');
+const { Products } = require('../model/products');
 
 
 routes.get('/products', (req, res) => {
@@ -26,4 +26,7 @@ routes.delete('/product/:id', (req, res) => {
     Products.deleteProduct(req, res);
 });
 
-module.exports = route;
+module.exports = {
+    express,
+    routes
+}
