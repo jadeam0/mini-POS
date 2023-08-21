@@ -1,11 +1,12 @@
 require('dotenv').config();
-const { express, routes } = require('./controller/userController');
+const express = require('express');
 const path = require('path');
 const app = express();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const {errorHandling} = require('./middleware/errorHandling');
-const { route } = require('./controller/productsController');
+const { routes } = require('./controller/userController');
+// const { route } = require('./controller/productsController')
 const port = +process.env.PORT || 3000;
 
 // Static
@@ -23,7 +24,8 @@ app.use(
   express.json()
 )
 
-app.use(route);
+app.use(routes);
+// app.use(route);
 
 app.use(errorHandling);
 

@@ -3,11 +3,12 @@ const bodyParser = require('body-parser');
 const routes = express.Router();
 // const db = require('../config/index');
 // const { routes } = require('./userController');
-const { Products } = require('../model/products');
+const Products  = require('../model/products');
+const products = new Products();
 
 
 routes.get('/products', (req, res) => {
-    Products.fetchproducts(req, res);
+    products.fetchProduct(req, res);
 });
 
 routes.get('/product/:id', (req,res) => {
